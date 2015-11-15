@@ -7,17 +7,25 @@ img {
 }
 .table-hover {
   border: 3px solid orange;
+  text-align: center;
 }
 th{
   padding: 10px;
+  background-color: grey;
+  text-align: center;
+  font-size: 24px;
 }
 tr {
   border: 4px solid lightblue;
 }
-a {
+td {
+  border:1px solid lightblue;
+  padding: 5px;
+  color: #d966ff;
   font-size: 30px;
   font-weight: bold;
 }
+
 div {
   margin: 20px;
 }
