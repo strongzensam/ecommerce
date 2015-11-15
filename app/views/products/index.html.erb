@@ -1,0 +1,20 @@
+<h1>Products</h1>
+
+<table class ="table-hover">
+<tr>
+<th>Pedal</th>
+<th>Price</th>
+<th>Image</th>
+<th>Description</th>
+</tr>
+
+  <tr>
+  <% @products.each do |product| %>
+  <td><a href = " http://localhost:3000/products/<%= product[:id] %>"><%= product.name %></a></td>
+  <td><%= product.price %></td>
+  <td><img class = "center-block img-responsive"src = "<%= product.image %>"/></td>
+  <td><%= product.description %></td>
+  </tr>
+  <% end %>
+  </table>
+  <div><a href="http://localhost:3000/products/new">Add a new product</a></div>

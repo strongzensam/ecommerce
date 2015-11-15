@@ -1,0 +1,13 @@
+<%= form_tag "/products/#{@product.id}", method: :patch do %>
+<table>
+  <tr><td><%= label_tag :name, "Name" %></td>
+  <td><%= text_field_tag :name, @product.name %></td></tr>
+  <tr><td><%= label_tag :price, "Price" %></td>
+  <td><%= text_field_tag :price, @product.price %></td></tr>
+  <tr><td><%= label_tag :image, "Image URL" %></td>
+  <td><%= text_field_tag :image, @product.image %></td></tr>
+  <tr><td><%= label_tag :description, "Description" %></td>
+  <td><%= text_field_tag :description, @product.description %></td></tr>
+  <% end %>
+  </table>
+  <%= submit_tag "Edit product" %>

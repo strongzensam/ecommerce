@@ -1,0 +1,13 @@
+<%= form_tag '/products', method: :post do %>
+<table>
+  <tr><td><%= label_tag :name, "Name" %></td>
+  <td><%= text_field_tag :name %></td></tr>
+  <tr><td><%= label_tag :price, "Price" %></td>
+  <td><%= text_field_tag :price %></td></tr>
+  <tr><td><%= label_tag :image, "Image URL" %></td>
+  <td><%= text_field_tag :image %></td></tr>
+  <tr><td><%= label_tag :description, "Description" %></td>
+  <td><%= text_field_tag :description %></td></tr>
+  </table>
+  <%= submit_tag "Add new product" %>
+<% end %>
