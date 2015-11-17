@@ -1,4 +1,7 @@
 <div><img src ="<%= @product[:image] %>"></div>
+<h3>Price: <%= @product.price %></h3>
+<h3>Tax: <%= @product.tax %></h3>
+<h3>Total: <%= @product.total %></h3>
 
 <%= link_to "Delete", "/products/#{@product.id}", method: :delete %>
 <%= link_to "Edit", "/products/#{@product.id}/edit", method: :get %>
