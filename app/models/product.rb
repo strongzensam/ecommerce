@@ -1,13 +1,6 @@
 class Product < ActiveRecord::Base
   def price_without_dollarsign
-    if price.include?("$")
-      # p "Boom"
-      price_split =  price.split("")
-      price_split = price_split[1..-1]
-      price_split.join("")
-    else
       price
-    end
   end
   def sale_message
     if price_without_dollarsign.to_i < 2
@@ -21,5 +14,12 @@ class Product < ActiveRecord::Base
   end
   def total
     total = price_without_dollarsign.to_i + tax
+  end
+  def stock
+    if in_stock == true
+      "In Stock"
+    else
+      "Not in Stock"
+    end
   end
 end

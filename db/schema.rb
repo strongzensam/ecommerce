@@ -11,15 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151117051455) do
+ActiveRecord::Schema.define(version: 20151118023532) do
 
   create_table "products", force: :cascade do |t|
-    t.string   "name"
-    t.decimal  "price",       precision: 5, scale: 2
-    t.text     "image"
-    t.text     "description"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.string   "name",        limit: 255
+    t.decimal  "price",                     precision: 5, scale: 2
+    t.text     "image",       limit: 65535
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                                                       null: false
+    t.datetime "updated_at",                                                       null: false
+    t.boolean  "in_stock",                                          default: true
   end
 
 end

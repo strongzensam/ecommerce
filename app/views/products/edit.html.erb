@@ -8,6 +8,8 @@
   <td><%= text_field_tag :image, @product.image %></td></tr>
   <tr><td><%= label_tag :description, "Description" %></td>
   <td><%= text_field_tag :description, @product.description %></td></tr>
+  <tr><td><%= label_tag :in_stock, "In Stock?" %></td>
+  <td><%= text_field_tag :in_stock, @product.stock %></td></tr>
   <% end %>
   </table>
   <%= submit_tag "Edit product" %>

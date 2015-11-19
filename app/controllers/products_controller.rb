@@ -17,11 +17,12 @@ class ProductsController < ApplicationController
   def edit
     id = params[:id]
     @product = Product.find_by(id: id)
+    @product[:in_stock] = true
   end
   def update
     id = params[:id]
     @product = Product.find_by(id: id)
-    @product.update(name: params[:name], price: params[:price], image: params[:image], description: params[:description])
+    @product.update(name: params[:name], price: params[:price], image: params[:image], description: params[:description], in_stock: params[:in_stock])
     flash[:success] = "Product Updated"
     redirect_to "/products/#{@product.id}"
 
