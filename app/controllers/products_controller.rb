@@ -1,7 +1,13 @@
 class ProductsController < ApplicationController
 
   def index
-      @products = Product.all
+      if params[:view] == "order_by_price"
+        @products = Product.order(:price)
+      elsif params[:view] == "order_by_price_desc"
+        @products = Product.order(price: :desc)
+      else
+        @products = Product.all
+      end
   end
   def new
   end
@@ -33,5 +39,9 @@ class ProductsController < ApplicationController
     product.destroy
     flash[:danger] = "Product Destroyed"
     redirect_to "/products"
+  end
+  def search
+    search_term = params[:search]
+    @products = Product.where("name LIKE ?", "%#{search_term}%")
   end
 end
