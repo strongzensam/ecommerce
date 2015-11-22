@@ -1,4 +1,7 @@
 class Product < ActiveRecord::Base
+  belongs_to :supplier
+
+  has_many :images
   def price_without_dollarsign
       price
   end
@@ -22,4 +25,8 @@ class Product < ActiveRecord::Base
       "Not in Stock"
     end
   end
+  def image_first
+    Image.find_by(product_id: id).url
+  end
+
 end

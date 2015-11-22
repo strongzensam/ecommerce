@@ -1,7 +1,11 @@
-<div><img src ="<%= @product[:image] %>"></div>
+<% @product.images.each do |image| %>
+<div>
+<% p @product.images %>
+<img src ="<%= image.url %>"></div><% end %>
 <h3>Price: <%= @product.price %></h3>
 <h3>Tax: <%= @product.tax %></h3>
 <h3>Total: <%= @product.total %></h3>
+<h3>Supplied by <%= @product.supplier.name %></h3>
 
 <%= link_to "Delete", "/products/#{@product.id}", method: :delete %>
 <%= link_to "Edit", "/products/#{@product.id}/edit", method: :get %>

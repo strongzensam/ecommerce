@@ -19,7 +19,7 @@
   <% @products.each do |product| %>
   <td><a href = "http://localhost:3000/products/<%= product[:id] %>"><%= product.name %></a></td>
   <td><%= number_to_currency(product.price) %></td>
-  <td><img class = "center-block img-responsive"src = "<%= product.image %>"/></td>
+  # <td><img class = "center-block img-responsive"src = "<%= product.image_first %>"/></td>
   <td><%= product.description %></td>
   <td><%= product.stock %></td>
   </tr>
