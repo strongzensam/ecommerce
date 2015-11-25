@@ -1,12 +1,19 @@
 Rails.application.routes.draw do
-  get '/products', to: 'products#index'
+  devise_for :users
+  root to: "products#index"
   get '/products/new', to: 'products#new'
+  post '/orders', to: 'orders#create'
   post '/products', to: 'products#create'
+  get '/images/new', to: 'images#new'
+  post '/images', to: 'images#create'
+  post '/products/search', to: 'products#search'
   get '/products/:id', to: 'products#show'
   get '/products/:id/edit', to: 'products#edit'
+  get '/images/:id/edit', to: 'images#edit'
   patch '/products/:id', to: 'products#update'
+  patch '/images/:id', to: 'images#update'
   delete '/products/:id', to: 'products#destroy'
-  post '/products/search', to: 'products#search'
+  get '/orders/:id', to: 'orders#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

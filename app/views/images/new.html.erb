@@ -1,0 +1,5 @@
+<%= form_tag '/images', method: :post do %>
+<h3><%= label_tag :image, "Image URL" %></h3>
+  <h3><%= text_field_tag :image %></h3>
+  <h3><%= submit_tag "Add new image" %></h3>
+<% end %>
