@@ -10,12 +10,16 @@ class ProductsController < ApplicationController
       end
   end
   def new
+    @new_product = Product.new
   end
   def create
-     @new_product = Product.create(name: params[:name], price: params[:price], description: params[:description], user_id: current_user.id)
-     
-     flash[:success] = "Product Created"
-     redirect_to "/images/new"
+     @new_product = Product.new(name: params[:name], price: params[:price], description: params[:description], user_id: current_user.id)
+     if @new_product.save
+       flash[:success] = "Product Created"
+       redirect_to "/images/new"
+     else
+      render :new
+    end
   end
   def show 
     id = params[:id]

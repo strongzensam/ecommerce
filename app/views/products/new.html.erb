@@ -1,11 +1,20 @@
 <%= form_tag '/products', method: :post do %>
+  <div>
+    <ul>
+      <% if @new_product && @new_product.errors.any? %>
+        <% @new_product.errors.full_messages.each do |message| %>
+          <li class = "error"><%= message %></li>
+        <% end %>
+      <% end %>
+  </ul>
+</div>
 <table>
   <tr><td><%= label_tag :name, "Name" %></td>
-  <td><%= text_field_tag :name %></td></tr>
+  <td><%= text_field_tag :name, @new_product.name %></td></tr>
   <tr><td><%= label_tag :price, "Price" %></td>
-  <td><%= text_field_tag :price %></td></tr>
+  <td><%= text_field_tag :price, @new_product.price %></td></tr>
   <tr><td><%= label_tag :description, "Description" %></td>
-  <td><%= text_field_tag :description %></td></tr>
+  <td><%= text_field_tag :description, @new_product.description %></td></tr>
   </table>
   <%= submit_tag "Add new product" %>
 <% end %>

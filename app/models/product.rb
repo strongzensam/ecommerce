@@ -3,6 +3,8 @@ class Product < ActiveRecord::Base
   belongs_to :user
   has_many :orders
 
+  validates :name, :price, :description, presence: true
+
   has_many :images
   def price_without_dollarsign
       price
