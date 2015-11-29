@@ -30,4 +30,7 @@
   <h3><%= link_to "Order by price", "/products?view=order_by_price" %></h3>
   <h3><%= link_to "Order by price Descending", "/products?view=order_by_price_desc" %></h3>
   <h3><%= link_to "Show all", "/products?view=order_by_price" %></h3>
+  <% @categories.each do |category| %>
+  <h3><%= link_to category.name, "/products?category=#{category.name}" %></h3>
+  <% end %>
 

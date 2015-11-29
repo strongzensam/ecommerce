@@ -6,6 +6,9 @@
 <h3>Tax: <%= @product.tax %></h3>
 <h3>Total: <%= @product.total %></h3>
 <h3>Supplied by <%= @product.supplier.name %></h3>
+<% @product.categories.each do |category| %>
+<h3>Good for <%= category.name %></h3>
+<% end %>
 
 <%= link_to "Delete", "/products/#{@product.id}", method: :delete %>
 <%= link_to "Edit", "/products/#{@product.id}/edit", method: :get %>
