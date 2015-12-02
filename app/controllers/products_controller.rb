@@ -38,7 +38,7 @@ class ProductsController < ApplicationController
     @product = Product.find_by(id: id)
     @product.update(name: params[:name], price: params[:price], description: params[:description], in_stock: params[:in_stock])
     flash[:success] = "Product Updated"
-    redirect_to "/images/edit"
+    redirect_to "/images/:id/edit"
 
   end
   def destroy

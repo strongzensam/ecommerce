@@ -12,11 +12,11 @@
 
 <%= link_to "Delete", "/products/#{@product.id}", method: :delete %>
 <%= link_to "Edit", "/products/#{@product.id}/edit", method: :get %>
-<div><%= form_tag '/orders', method: :post do %>
-  <h3><%= label_tag :qty, "Quantity" %>
-  <%= text_field_tag :qty %></h3>
-    <h3><%= label_tag :product_id, "Product ID" %>
-  <%= text_field_tag :product_id %></h3>
-  <%= submit_tag "Checkout" %>
+<div><%= form_tag '/carted_products', method: :post do %>
+  <h3><%= label_tag :quantity, "Quantity" %>
+  <%= text_field_tag :quantity %></h3>
+    
+  <%= hidden_field_tag :product_id, @product.id %>
+  <%= submit_tag "Add to Cart" %>
 <% end %></div>
 <!-- <a class="btn btn-default" href="#" role="button">Order Now!</a> -->

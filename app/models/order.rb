@@ -1,7 +1,8 @@
 class Order < ActiveRecord::Base
   belongs_to :user
-  belongs_to :product
+  has_many :carted_products
+  has_many :products, through: :carted_products
 
-  validates :user_id, :product_id presence: true
-  validates :quantity, :subtotal, :tax, :total numericality: true
+  validates :user_id, presence: true
+  validates :subtotal, :tax, :total, numericality: true
 end

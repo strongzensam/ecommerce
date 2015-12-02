@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/images/new', to: 'images#new'
   post '/images', to: 'images#create'
   post '/products/search', to: 'products#search'
+  get '/carted_products', to: 'carted_products#index'
+  post '/carted_products', to: 'carted_products#create'
   get '/products/:id', to: 'products#show'
   get '/products/:id/edit', to: 'products#edit'
   get '/images/:id/edit', to: 'images#edit'

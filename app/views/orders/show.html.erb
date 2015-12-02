@@ -1,9 +1,10 @@
 <h1>Thanks for your order!</h1>
-<h3>Quantity: <%= @order.quantity %></h3>
 <h3>Subtotal: <%= @order.subtotal %></h3>
 <h3>Tax: <%= @order.tax %></h3>
 <h3>Total: <%= @order.total %></h3>
-<h3>Product: <%= @order.product.name %></h3>
+<h3>Products: <% @order.products.each do |product|%> 
+<div><%= product.name%></div>
+<% end %></h3>
 <h3>Purchased: <%= @order.created_at %></h3>
 <h3>Purchased by: <%= @order.user.email %></h3>
 

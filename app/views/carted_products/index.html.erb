@@ -1,0 +1,23 @@
+<h1>Carted Products</h1>
+<table class ="table-hover">
+<th>Product Page</th>
+<th>Quantity</th>
+<th>Image</th>
+<th>Description</th>
+  <tr>
+    <% @carted_products.each do |carted_product| %>
+      <td><%= link_to carted_product.product.name, "/products/#{carted_product.product.id}" %></td>
+      <td><%= carted_product.quantity %></td>
+      # <td><img class = "center-block img-responsive"src = "<%= carted_product.product.image_first %>"/></td>
+      <td><%= carted_product.product.description %></td>
+    </tr>
+  <% end %>
+  </table>
+  <table class ="table-hover">
+    <tr><th>Subtotal</th><td><%= @subtotal %></td></tr>
+    <tr><th>Tax</th><td><%= @tax %></td></tr>
+    <tr><th>Total</th><td><%= @total %></td></tr>
+  </table>
+  <%= form_tag "/orders", method: :post do %>
+  <%= submit_tag "Checkout" %>
+  <% end %>
