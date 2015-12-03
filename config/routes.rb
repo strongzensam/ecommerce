@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post '/products/search', to: 'products#search'
   get '/carted_products', to: 'carted_products#index'
   post '/carted_products', to: 'carted_products#create'
+  delete '/carted_products/:id', to: 'carted_products#destroy'
   get '/products/:id', to: 'products#show'
   get '/products/:id/edit', to: 'products#edit'
   get '/images/:id/edit', to: 'images#edit'

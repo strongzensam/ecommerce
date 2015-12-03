@@ -4,12 +4,14 @@
 <th>Quantity</th>
 <th>Image</th>
 <th>Description</th>
+<th>Remove Product(s)</th>  
   <tr>
     <% @carted_products.each do |carted_product| %>
       <td><%= link_to carted_product.product.name, "/products/#{carted_product.product.id}" %></td>
       <td><%= carted_product.quantity %></td>
       # <td><img class = "center-block img-responsive"src = "<%= carted_product.product.image_first %>"/></td>
       <td><%= carted_product.product.description %></td>
+      <td><%= link_to "Remove", "/carted_products/#{carted_product.id}", method: :delete %></td>
     </tr>
   <% end %>
   </table>

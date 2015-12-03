@@ -19,6 +19,16 @@ class CartedProductsController < ApplicationController
     end
 
   end
+  def destroy
+    carted_product = CartedProduct.find_by(id: params[:id])
+    carted_product.status = "removed"
+    if carted_product.save 
+      flash[:warning] = "#{carted_product.quantity} #{carted_product.product.name} removed from cart"
+    else
+      flash[:danger] = "Product not removed from cart"
+    end
+    redirect_to "/"
+  end
   
 end
 
