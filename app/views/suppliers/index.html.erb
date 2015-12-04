@@ -1,0 +1,6 @@
+<h1>Suppliers</h1>
+
+<% @suppliers.each do |supplier| %>
+<div><%= link_to supplier.company_name, "/suppliers/#{supplier.id}" %></div>
+<% end %>
+<h1><%= link_to "Become a Supplier", "/suppliers/new" %></h1>

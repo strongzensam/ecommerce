@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   patch '/images/:id', to: 'images#update'
   delete '/products/:id', to: 'products#destroy'
   get '/orders/:id', to: 'orders#show'
+  resources :suppliers
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

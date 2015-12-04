@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-
+  before_action :authenticate_admin!, except: [:index,:show, :search]
+  before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
   def index
     @categories = Category.all
       if params[:view] == "order_by_price"
