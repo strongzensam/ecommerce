@@ -1,0 +1,28 @@
+<%= form_for @product do |f|%>
+  <div>
+    <ul>
+      <% if @product && @product.errors.any? %>
+        <% @product.errors.full_messages.each do |message| %>
+          <li class = "error"><%= message %></li>
+        <% end %>
+      <% end %>
+  </ul>
+</div>
+<table>
+  <tr><td><%= f.label :name %></td>
+  <td><%= f.text_field :name %></td></tr>
+  <tr><td><%= f.label :price %></td>
+  <td><%= f.text_field :price %></td></tr>
+  <tr><td><%= f.label :description %></td>
+  <td><%= f.text_field :description %></td></tr>
+  <tr><td><%= f.label :in_stock %></td>
+  <td><%= f.check_box :in_stock %></td></tr>
+  <tr><td><%= f.label :supplier %></td>
+  <td><%= f.collection_select :supplier_id, Supplier.all, :id, :company_name %></td></tr>
+  <%= f.fields_for :images do |ff| %>
+    <tr><td><%= ff.label :image_url %></td>
+    <td><%= ff.text_field :image_url  %></td></tr>
+  <% end %>
+  </table>
+  <%= f.submit %>
+<% end %>

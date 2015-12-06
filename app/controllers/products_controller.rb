@@ -14,13 +14,14 @@ class ProductsController < ApplicationController
       end
   end
   def new
-    @new_product = Product.new
+    @product = Product.new
+    @product.images.build
   end
   def create
-     @new_product = Product.new(name: params[:name], price: params[:price], description: params[:description], user_id: current_user.id)
-     if @new_product.save
+     @product = Product.new(product_params)
+     if @product.save
        flash[:success] = "Product Created"
-       redirect_to "/images/new"
+       redirect_to "/products/#{@product.id}"
      else
       render :new
     end
@@ -32,14 +33,12 @@ class ProductsController < ApplicationController
   def edit
     id = params[:id]
     @product = Product.find_by(id: id)
-    @product[:in_stock] = true
   end
   def update
     id = params[:id]
     @product = Product.find_by(id: id)
-    @product.update(name: params[:name], price: params[:price], description: params[:description], in_stock: params[:in_stock])
+    @product.update(product_params)
     flash[:success] = "Product Updated"
-    redirect_to "/images/:id/edit"
 
   end
   def destroy
@@ -52,5 +51,11 @@ class ProductsController < ApplicationController
   def search
     search_term = params[:search]
     @products = Product.where("name LIKE ?", "%#{search_term}%")
+  end
+
+  private
+
+  def product_params
+    params.require(:product).permit(:id, :name, :price, :description, :supplier_id,:in_stock, images_attributes: [:image_url])
   end
 end

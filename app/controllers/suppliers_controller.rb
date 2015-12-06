@@ -6,7 +6,7 @@ class SuppliersController < ApplicationController
     @supplier = Supplier.new
   end
   def create
-    @supplier = Supplier.new(params[:supplier])
+    @supplier = Supplier.new(supplier_params)
     if @supplier.save
       flash[:success] = "You are now a new supplier with Pedals that Rock!"
       redirect_to "/suppliers/#{@supplier.id}"
@@ -22,7 +22,7 @@ class SuppliersController < ApplicationController
   end
   def update
     @supplier = Supplier.find_by(id: params[:id])
-    if @supplier.update(params[:supplier])
+    if @supplier.update(supplier_params)
       flash[:success] = "You have updated your supplier info!"
       redirect_to "/suppliers/#{@supplier.id}"
     else
@@ -35,4 +35,11 @@ class SuppliersController < ApplicationController
     flash[:danger] = "Supplier changed to inactive"
     redirect_to "/suppliers/#{@supplier.id}"
   end
+
+  private
+
+  def supplier_params
+    params.require(:supplier).permit(:company_name, :first_name, :last_name, :phone)
+  end
+  
 end

@@ -5,6 +5,7 @@ class Product < ActiveRecord::Base
   has_many :categories, through: :categorized_products
   has_many :carted_products
   has_many :orders, through: :carted_products
+  # accepts_nested_attributes_for :images
 
   validates :name, :price, :description, presence: true
 
@@ -33,7 +34,7 @@ class Product < ActiveRecord::Base
     end
   end
   def image_first
-    Image.find_by(product_id: id).url
+    Image.find_by(product_id: id).image_url
   end
 
 end
